@@ -293,7 +293,7 @@ albums_by_bands("Radiohead")
           <span class="method-badge get">GET</span>
           <code class="endpoint-path">favorite_bands(min_albums.var, live_ep.var)</code>
         </div>
-        <p>Returns top 15 artists (by average rating) with at least <code>min_albums.var</code> ranked albums. Sorted in descending order by rating. When <code>live_ep.var == TRUE</code>, excludes EPs and live albums.</p>
+        <p>Returns up to 15 artists (by average rating) with at least <code>min_albums.var</code> ranked albums. Sorted in descending order by rating. When <code>live_ep.var == TRUE</code>, excludes EPs and live albums.</p>
         <div class="params-block">
           <strong>Parameters</strong>
           <table class="params-table">
@@ -308,7 +308,7 @@ albums_by_bands("Radiohead")
         <div class="example-block">
           <strong>Example</strong>
           <pre><code>source("fav_bands.R")
-favorite_bands(3, TRUE)   # Top 15 artists, min 3 albums, exclude EPs/live
+favorite_bands(3, TRUE)   # Up to 15 artists, min 3 albums, exclude EPs/live
 favorite_bands(5, FALSE)  # Include all album types
 #   Artist Rating NumAlbums
 # 1 Radiohead  8.9        12
@@ -397,8 +397,8 @@ missing_vinyl(8.5)
           <tr><td><code>Artist</code></td><td>character</td><td>Artist name (must be consistent)</td></tr>
           <tr><td><code>Rating</code></td><td>numeric</td><td>Owner's rating (typically 0–10 scale)</td></tr>
           <tr><td><code>Vinyl</code></td><td>character</td><td>Empty = not owned; non-empty = owned</td></tr>
-          <tr><td><code>EP</code></td><td>character</td><td>"EP" for extended play; otherwise excluded</td></tr>
-          <tr><td><code>Live</code></td><td>character</td><td>"Live" for live albums; otherwise excluded</td></tr>
+          <tr><td><code>EP</code></td><td>character</td><td>"EP" for extended play; empty otherwise</td></tr>
+          <tr><td><code>Live</code></td><td>character</td><td>"Live" for live albums; empty otherwise</td></tr>
         </table>
         <p class="note">Artist names are case-sensitive. Use <code>unique(album_data$Artist)</code> for valid values. See also <code>all_bands</code> and <code>all_years</code> variables for populating UI dropdowns.</p>
         <div class="example-block">
