@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="api.css">
+  <title>My Favorite Albums — API Reference</title>
+</head>
+<body>
+  <header class="api-header">
+    <h1>My Favorite Albums</h1>
+    <p class="api-subtitle">API Reference</p>
+    <p class="api-desc">Reference documentation for the data aggregation functions used by the My Favorite Albums Shiny app. All functions operate on the <code>album_data</code> dataset (loaded from <code>data/album-ranking.csv</code>). <strong>Developers who want more detail</strong>—including behavior, examples, exceptions, returns, and parameters for each function—should look at the <a href="https://github.com/JTovalin10/MyFavoriteAlbums" target="_blank" rel="noopener">MyFavoriteAlbums repository</a>, where the source code has more detailed comments.</p>
+  </header>
+
+  <nav class="api-nav">
+    <span class="nav-label">Endpoints</span>
+    <a href="#quick-start">Quick Start</a>
+    <a href="#home">Home</a>
+    <a href="#number-one-album">number_one_album</a>
+    <a href="#year-albums">year_albums</a>
+    <a href="#albums-by-bands">albums_by_bands</a>
+    <a href="#favorite-bands">favorite_bands</a>
+    <a href="#band-comparison">band_album_comparison_chart</a>
+    <a href="#missing-vinyl">missing_vinyl</a>
+    <a href="#data-schema">Data Schema</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+
+  <main class="api-main">
+    <!-- Quick Start -->
+    <section id="quick-start" class="endpoint-section">
+      <h2>Quick Start</h2>
+      <p class="section-desc">Use these functions in the RStudio console. First load the data and required packages, then source the file containing the function you need.</p>
+      <p class="section-desc"><strong>For developers:</strong> The <a href="https://github.com/JTovalin10/MyFavoriteAlbums" target="_blank" rel="noopener">MyFavoriteAlbums GitHub repo</a> has more detailed documentation in the code (behavior, examples, exceptions, returns, parameters).</p>
+
+      <article class="endpoint-card example-card">
+        <h4>1. Load data and packages</h4>
+        <pre><code>library(dplyr)
+album_data &lt;- read.csv("data/album-ranking.csv")</code></pre>
+        <p class="example-note">Set your working directory to the project folder first (<strong>Session → Set Working Directory → Choose Directory</strong>).</p>
+
+        <h4>2. Source the file and call the function</h4>
+        <pre><code>source("home.R")
+total_album_count()
+total_band_count()
+most_pop_artist()</code></pre>
+        <p class="example-output"><strong>Output:</strong> <code>"Albums in the database: 123"</code>, <code>"Artists in the database: 45"</code>, etc.</p>
+
+        <h4>3. Example: Get an artist's albums</h4>
+        <pre><code>source("albums_by_band.R")
+albums_by_bands("Radiohead")
+band_mean_rating("Radiohead")
+band_album_count("Radiohead")</code></pre>
+
+        <h4>4. Example: Compare two artists (requires ggplot2)</h4>
+        <pre><code>library(ggplot2)
+source("compare_bands.R")
+band_album_comparison_chart("Radiohead", "Arcade Fire")</code></pre>
+        <p class="example-note">Artist names are case-sensitive. Run <code>unique(album_data$Artist)</code> to see valid names.</p>
+      </article>
+    </section>
+
+    <!-- Home stats -->
+    <section id="home" class="endpoint-section">
+      <h2>Home Statistics</h2>
+      <p class="section-desc">Summary statistics displayed on the home page.</p>
+
+      <article class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="method-badge get">GET</span>
+          <code class="endpoint-path">total_album_count()</code>
+        </div>
+        <p>Returns the total number of albums in <code>album_data</code>.</p>
+        <div class="params-block">
+          <strong>Parameters</strong>
+          <table class="params-table">
+            <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><em>none</em></td><td>—</td><td>—</td><td>Uses global <code>album_data</code></td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Returns:</strong> prints to console (e.g., "Albums in the database: 123")
+        </div>
+        <div class="example-block">
+          <strong>Example</strong>
+          <pre><code>source("home.R")
+total_album_count()
+# [1] "Albums in the database: 123"</code></pre>
+        </div>
+      </article>
+
+      <article class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="method-badge get">GET</span>
+          <code class="endpoint-path">total_band_count()</code>
+        </div>
+        <p>Returns the total number of unique artists in <code>album_data</code>.</p>
+        <div class="params-block">
+          <strong>Parameters</strong>
+          <table class="params-table">
+            <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><em>none</em></td><td>—</td><td>—</td><td>Uses global <code>album_data</code></td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Returns:</strong> prints to console (e.g., "Artists in the database: 45")
+        </div>
+        <div class="example-block">
+          <strong>Example</strong>
+          <pre><code>total_band_count()
+# [1] "Artists in the database: 45"</code></pre>
+        </div>
+      </article>
+
+      <article class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="method-badge get">GET</span>
+          <code class="endpoint-path">most_pop_artist()</code>
+        </div>
+        <p>Returns the artist with the most albums in <code>album_data</code>.</p>
+        <div class="params-block">
+          <strong>Parameters</strong>
+          <table class="params-table">
+            <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><em>none</em></td><td>—</td><td>—</td><td>Uses global <code>album_data</code></td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Returns:</strong> prints to console (e.g., "Artist with most albums in the database: Radiohead")
+        </div>
+        <div class="example-block">
+          <strong>Example</strong>
+          <pre><code>most_pop_artist()
+# [1] "Artist with most albums in the database: Radiohead"</code></pre>
+        </div>
+      </article>
+    </section>
+
+    <!-- Number One Album -->
+    <section id="number-one-album" class="endpoint-section">
+      <h2>number_one_album</h2>
+      <p class="section-desc">Retrieves the top album (Ranking == 1) for each year in a range.</p>
+
+      <article class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="method-badge get">GET</span>
+          <code class="endpoint-path">number_one_album(var.startyear, var.endyear)</code>
+        </div>
+        <p>Filters <code>album_data</code> to rows where <code>Year</code> is in range and <code>Ranking</code> == 1. Returns one row per year. Sorted in ascending order by year.</p>
+        <div class="params-block">
+          <strong>Parameters</strong>
+          <table class="params-table">
+            <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>var.startyear</code></td><td>integer</td><td>Yes</td><td>Inclusive start of year range (earliest year to include)</td></tr>
+            <tr><td><code>var.endyear</code></td><td>integer</td><td>Yes</td><td>Inclusive end of year range (latest year to include)</td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Returns:</strong> data.frame with columns <code>Year</code>, <code>Album</code>, <code>Artist</code> (sorted in ascending order by year)
+        </div>
+        <div class="example-block">
+          <strong>Example</strong>
+          <pre><code>source("number_one_albums.R")
+number_one_album(2018, 2024)
+#   Year        Album      Artist
+# 1 2018  Golden Hour   Kacey Musgraves
+# 2 2019  Norman F***ing Rockwell!  Lana Del Rey
+# ...</code></pre>
+        </div>
+      </article>
+    </section>
+
+    <!-- Year Albums -->
+    <section id="year-albums" class="endpoint-section">
+      <h2>year_albums</h2>
+      <p class="section-desc">Returns all ranked albums for one specific year.</p>
+
+      <article class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="method-badge get">GET</span>
+          <code class="endpoint-path">year_albums(year.var)</code>
+        </div>
+        <p>Filters <code>album_data</code> to rows where <code>Year</code> equals the selected year. Returns ranking, album, artist. Sorted in ascending order by ranking.</p>
+        <div class="params-block">
+          <strong>Parameters</strong>
+          <table class="params-table">
+            <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>year.var</code></td><td>integer</td><td>Yes</td><td>Year to filter by (e.g., 2024 returns only albums from that year)</td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Returns:</strong> data.frame with columns <code>Ranking</code>, <code>Album</code>, <code>Artist</code> (sorted in ascending order by ranking)
+        </div>
+        <div class="example-block">
+          <strong>Example</strong>
+          <pre><code>source("albums_by_year.R")
+year_albums(2024)
+#   Ranking           Album        Artist
+# 1       1  Wall of Eyes    The Smile
+# 2       2  The Tortured Poets Department  Taylor Swift
+# ...</code></pre>
+        </div>
+      </article>
+    </section>
+
+    <!-- Albums by Band -->
+    <section id="albums-by-bands" class="endpoint-section">
+      <h2>albums_by_bands</h2>
+      <p class="section-desc">Returns a selected artist's albums with metadata. Use helper functions for aggregate stats.</p>
+
+      <article class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="method-badge get">GET</span>
+          <code class="endpoint-path">albums_by_bands(band.var)</code>
+        </div>
+        <p>Filters <code>album_data</code> to rows where <code>Artist</code> equals the selected artist (case-sensitive). Returns album, year, rating. Sorted in ascending order by year.</p>
+        <div class="params-block">
+          <strong>Parameters</strong>
+          <table class="params-table">
+            <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>band.var</code></td><td>character</td><td>Yes</td><td>Artist name (case-sensitive; run <code>unique(album_data$Artist)</code> for valid names)</td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Returns:</strong> data.frame with columns <code>Album</code>, <code>Year</code>, <code>Rating</code> (sorted in ascending order by year)
+        </div>
+        <div class="example-block">
+          <strong>Example</strong>
+          <pre><code>source("albums_by_band.R")
+albums_by_bands("Radiohead")
+#        Album Year Rating
+# 1  The Bends 1995    8.5
+# 2 OK Computer 1997    9.2
+# ...</code></pre>
+        </div>
+      </article>
+
+      <article class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="method-badge get">GET</span>
+          <code class="endpoint-path">band_mean_rating(band.var)</code>
+        </div>
+        <p>Helper: calculates average rating for the selected artist. Prints to console.</p>
+        <div class="params-block">
+          <strong>Parameters</strong>
+          <table class="params-table">
+            <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>band.var</code></td><td>character</td><td>Yes</td><td>Artist name (case-sensitive; run <code>unique(album_data$Artist)</code> for valid names)</td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Returns:</strong> prints to console (e.g., "Average Rating: 8.50")
+        </div>
+        <div class="example-block">
+          <strong>Example</strong>
+          <pre><code>band_mean_rating("Radiohead")
+# [1] "Average Rating: 8.50"</code></pre>
+        </div>
+      </article>
+
+      <article class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="method-badge get">GET</span>
+          <code class="endpoint-path">band_album_count(band.var)</code>
+        </div>
+        <p>Helper: returns total number of ranked albums for the artist. Prints to console.</p>
+        <div class="params-block">
+          <strong>Parameters</strong>
+          <table class="params-table">
+            <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>band.var</code></td><td>character</td><td>Yes</td><td>Artist name (case-sensitive; run <code>unique(album_data$Artist)</code> for valid names)</td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Returns:</strong> prints to console (e.g., "Number of Albums Ranked: 12")
+        </div>
+        <div class="example-block">
+          <strong>Example</strong>
+          <pre><code>band_album_count("Radiohead")
+# [1] "Number of Albums Ranked: 12"</code></pre>
+        </div>
+      </article>
+    </section>
+
+    <!-- Favorite Bands -->
+    <section id="favorite-bands" class="endpoint-section">
+      <h2>favorite_bands</h2>
+      <p class="section-desc">Ranks top artists by average rating with configurable filters.</p>
+
+      <article class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="method-badge get">GET</span>
+          <code class="endpoint-path">favorite_bands(min_albums.var, live_ep.var)</code>
+        </div>
+        <p>Returns top 15 artists (by average rating) with at least <code>min_albums.var</code> ranked albums. Sorted in descending order by rating. When <code>live_ep.var == TRUE</code>, excludes EPs and live albums.</p>
+        <div class="params-block">
+          <strong>Parameters</strong>
+          <table class="params-table">
+            <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>min_albums.var</code></td><td>integer</td><td>Yes</td><td>Minimum number of ranked albums an artist must have to appear in results</td></tr>
+            <tr><td><code>live_ep.var</code></td><td>logical</td><td>Yes</td><td>If TRUE, excludes EPs and live albums from the calculation; if FALSE, includes all album types</td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Returns:</strong> data.frame with columns <code>Artist</code>, <code>Rating</code> (average), <code>NumAlbums</code> (sorted in descending order by rating)
+        </div>
+        <div class="example-block">
+          <strong>Example</strong>
+          <pre><code>source("fav_bands.R")
+favorite_bands(3, TRUE)   # Top 15 artists, min 3 albums, exclude EPs/live
+favorite_bands(5, FALSE)  # Include all album types
+#   Artist Rating NumAlbums
+# 1 Radiohead  8.9        12
+# 2 Arcade Fire  8.7         6
+# ...</code></pre>
+        </div>
+      </article>
+    </section>
+
+    <!-- Band Comparison Chart -->
+    <section id="band-comparison" class="endpoint-section">
+      <h2>band_album_comparison_chart</h2>
+      <p class="section-desc">Generates a line chart comparing two artists' ratings by year.</p>
+
+      <article class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="method-badge get">GET</span>
+          <code class="endpoint-path">band_album_comparison_chart(var.artist1, var.artist2)</code>
+        </div>
+        <p>Plots each artist's album ratings by year. First artist = red line, second = blue. Requires <code>ggplot2</code>.</p>
+        <div class="params-block">
+          <strong>Parameters</strong>
+          <table class="params-table">
+            <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>var.artist1</code></td><td>character</td><td>Yes</td><td>First artist (plotted as red line on chart)</td></tr>
+            <tr><td><code>var.artist2</code></td><td>character</td><td>Yes</td><td>Second artist (plotted as blue line on chart)</td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Returns:</strong> ggplot object (displays in RStudio Plots pane)
+        </div>
+        <div class="example-block">
+          <strong>Example</strong>
+          <pre><code>library(ggplot2)
+source("compare_bands.R")
+band_album_comparison_chart("Radiohead", "Arcade Fire")</code></pre>
+        <p class="example-note">Renders a line chart in the Plots pane. Red = first artist, blue = second. X-axis: year, Y-axis: rating.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Missing Vinyl -->
+    <section id="missing-vinyl" class="endpoint-section">
+      <h2>missing_vinyl</h2>
+      <p class="section-desc">Lists highly rated albums not yet owned on vinyl.</p>
+
+      <article class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="method-badge get">GET</span>
+          <code class="endpoint-path">missing_vinyl(missing_vinyl_rating.var)</code>
+        </div>
+        <p>Filters <code>album_data</code> to rows where <code>Rating</code> ≥ threshold and <code>Vinyl</code> is empty. Returns album, artist, rating. Sorted in descending order by rating.</p>
+        <div class="params-block">
+          <strong>Parameters</strong>
+          <table class="params-table">
+            <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>missing_vinyl_rating.var</code></td><td>numeric</td><td>Yes</td><td>Minimum rating threshold (albums with rating ≥ this value are included)</td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Returns:</strong> data.frame with columns <code>Album</code>, <code>Artist</code>, <code>Rating</code> (sorted in descending order by rating)
+        </div>
+        <div class="example-block">
+          <strong>Example</strong>
+          <pre><code>source("vinyl.R")
+missing_vinyl(8.5)
+#              Album        Artist Rating
+# 1  To Pimp a Butterfly  Kendrick Lamar    9.5
+# 2  Blonde            Frank Ocean      9.2
+# ...</code></pre>
+        </div>
+      </article>
+    </section>
+
+    <!-- Data Schema -->
+    <section id="data-schema" class="endpoint-section">
+      <h2>Data Schema</h2>
+      <p class="section-desc">Structure of <code>album-ranking.csv</code> used by all functions.</p>
+
+      <article class="endpoint-card schema-card">
+        <table class="params-table">
+          <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+          <tr><td><code>Year</code></td><td>integer</td><td>Release year</td></tr>
+          <tr><td><code>Ranking</code></td><td>integer</td><td>Owner's rank for that year (1 = top pick, 2 = second, etc.)</td></tr>
+          <tr><td><code>Album</code></td><td>character</td><td>Album title</td></tr>
+          <tr><td><code>Artist</code></td><td>character</td><td>Artist name (must be consistent)</td></tr>
+          <tr><td><code>Rating</code></td><td>numeric</td><td>Owner's rating (typically 0–10 scale)</td></tr>
+          <tr><td><code>Vinyl</code></td><td>character</td><td>Empty = not owned; non-empty = owned</td></tr>
+          <tr><td><code>EP</code></td><td>character</td><td>"EP" for extended play; otherwise excluded</td></tr>
+          <tr><td><code>Live</code></td><td>character</td><td>"Live" for live albums; otherwise excluded</td></tr>
+        </table>
+        <p class="note">Artist names are case-sensitive. Use <code>unique(album_data$Artist)</code> for valid values. See also <code>all_bands</code> and <code>all_years</code> variables for populating UI dropdowns.</p>
+        <div class="example-block">
+          <strong>Example: List valid artist names</strong>
+          <pre><code>unique(album_data$Artist)
+# [1] "Radiohead"   "Arcade Fire" "Taylor Swift" ...</code></pre>
+        </div>
+      </article>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="endpoint-section">
+      <h2>FAQ</h2>
+      <p class="section-desc">Common questions for end users and developers.</p>
+
+      <article class="endpoint-card">
+        <h3>Why doesn't my artist name work?</h3>
+        <p>Artist names are case-sensitive and must match exactly what is in the data. <code>"Radiohead"</code> is not the same as <code>"radiohead"</code>. Run <code>unique(album_data$Artist)</code> in R to see all valid names.</p>
+      </article>
+
+      <article class="endpoint-card">
+        <h3>How do I load the data?</h3>
+        <p>Set your working directory to the project folder, then run <code>album_data &lt;- read.csv("data/album-ranking.csv")</code>. You need <code>dplyr</code> for most functions. See <a href="#quick-start">Quick Start</a> for the full setup.</p>
+      </article>
+
+      <article class="endpoint-card">
+        <h3>I get an empty table. What's wrong?</h3>
+        <p>Check that the year or artist exists in your data. For <code>year_albums</code>, the year must be in <code>album_data$Year</code>. For artist functions, the name must match <code>album_data$Artist</code> exactly. Use <code>unique(album_data$Year)</code> and <code>unique(album_data$Artist)</code> to see valid values.</p>
+      </article>
+
+      <article class="endpoint-card">
+        <h3>Where is the Shiny app?</h3>
+        <p>Run <code>app.R</code> in RStudio to launch the web interface. The app loads the data and all function files automatically. Make sure your working directory is the project folder.</p>
+      </article>
+
+      <article class="endpoint-card">
+        <h3>Where can I get more technical detail?</h3>
+        <p>The <a href="https://github.com/JTovalin10/MyFavoriteAlbums" target="_blank" rel="noopener">MyFavoriteAlbums source code</a> has detailed comments for each function: behavior, examples, exceptions, returns, and parameter specs with input expectations.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="api-footer">
+    <p><a href="../index.html">← Back to My Favorite Albums Documentation</a></p>
+    <p><a href="https://github.com/JTovalin10/MyFavoriteAlbums" target="_blank" rel="noopener">View source code — more detailed docs for developers</a></p>
+  </footer>
+</body>
+</html>

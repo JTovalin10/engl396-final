@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Reference/api.css">
+  <title>My Favorite Albums — End User Guide</title>
+</head>
+<body>
+  <header class="api-header">
+    <h1>My Favorite Albums</h1>
+    <p class="api-subtitle">End User Guide</p>
+    <p class="api-desc">A conceptual overview of the My Favorite Albums web application. Learn when and how to use each tab to explore and analyze album rating and ranking data.</p>
+  </header>
+
+  <nav class="api-nav">
+    <span class="nav-label">Sections</span>
+    <a href="#overview">Overview</a>
+    <a href="#number-one-albums">Number One Albums</a>
+    <a href="#top-albums-by-year">Top Albums by Year</a>
+    <a href="#artists-albums">Artist's Albums</a>
+    <a href="#favorite-artists">Favorite Artists</a>
+    <a href="#artist-comparison">Artist Comparison</a>
+    <a href="#vinyl">Vinyl</a>
+    <a href="#terminology">Terminology</a>
+  </nav>
+
+  <main class="api-main">
+
+    <!-- Overview -->
+    <section id="overview" class="endpoint-section">
+      <h2>Overview</h2>
+      <p class="section-desc">My Favorite Albums is a web application that allows users to explore and analyze one person's album rating and annual ranking data through interactive data visualizations.</p>
+      <article class="endpoint-card">
+        <p><strong>Prerequisites:</strong> fundamental computer skills to use the app.</p>
+        <p>The application is organized into six tabs, each providing a different way to filter and view the data. The sections below explain what each tab does and how to interact with it.</p>
+      </article>
+    </section>
+
+    <!-- Number One Albums -->
+    <section id="number-one-albums" class="endpoint-section">
+      <h2>Number One Albums</h2>
+      <p class="section-desc">Find the owner's favorite album for each year within a selected range.</p>
+      <article class="endpoint-card">
+        <p>This section uses a range slider to aggregate data and show the owner's favorite album for each year within the selected range. At the bottom of the page, a data table displays the owner's favorite album by year.</p>
+        <div class="params-block">
+          <strong>Input</strong>
+          <table class="params-table">
+            <tr><th>Control</th><th>Type</th><th>Description</th></tr>
+            <tr><td>Year Range</td><td>Range Slider</td><td>Drag the handles to set the start and end year for the results</td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Output: data table with the following fields</strong>
+          <table class="params-table" style="margin-top:0.5rem">
+            <tr><th>Field</th><th>Description</th></tr>
+            <tr><td><code>Year</code></td><td>The year of the #1 album</td></tr>
+            <tr><td><code>Album</code></td><td>The top-ranked album for that year</td></tr>
+            <tr><td><code>Artist</code></td><td>The artist who made the album</td></tr>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <!-- Top Albums by Year -->
+    <section id="top-albums-by-year" class="endpoint-section">
+      <h2>Top Albums by Year</h2>
+      <p class="section-desc">See all of the owner's ranked albums for one specific year.</p>
+      <article class="endpoint-card">
+        <p>This section uses a drop-down menu that allows you to select one specific year, defaulting to 1993. When you choose a year, it displays a data table of the owner's favorite albums for that year and where each album ranks.</p>
+        <div class="params-block">
+          <strong>Input</strong>
+          <table class="params-table">
+            <tr><th>Control</th><th>Type</th><th>Description</th></tr>
+            <tr><td>Year</td><td>Drop-Down Menu</td><td>Select the year you want to view rankings for (default: 1993)</td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Output: data table with the following fields</strong>
+          <table class="params-table" style="margin-top:0.5rem">
+            <tr><th>Field</th><th>Description</th></tr>
+            <tr><td><code>Ranking</code></td><td>The album's rank for that year</td></tr>
+            <tr><td><code>Album</code></td><td>The album title</td></tr>
+            <tr><td><code>Artist</code></td><td>The artist who made the album</td></tr>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <!-- Artist's Albums -->
+    <section id="artists-albums" class="endpoint-section">
+      <h2>Artist's Albums</h2>
+      <p class="section-desc">View all albums the owner has listened to for a specific artist, along with their ratings.</p>
+      <article class="endpoint-card">
+        <p>This section uses a drop-down menu to select a specific artist and see what albums the owner has listened to, the year they were released, and the rating the owner gives each album. At the bottom of the data table, you will see the number of albums ranked for the selected artist and the average rating.</p>
+        <div class="params-block">
+          <strong>Input</strong>
+          <table class="params-table">
+            <tr><th>Control</th><th>Type</th><th>Description</th></tr>
+            <tr><td>Artist</td><td>Drop-Down Menu</td><td>Select the artist whose albums you want to view</td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Output: data table with the following fields, plus summary stats below the table</strong>
+          <table class="params-table" style="margin-top:0.5rem">
+            <tr><th>Field</th><th>Description</th></tr>
+            <tr><td><code>Album</code></td><td>The album title</td></tr>
+            <tr><td><code>Year</code></td><td>The release year</td></tr>
+            <tr><td><code>Rating</code></td><td>The owner's rating for the album</td></tr>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <!-- Favorite Artists -->
+    <section id="favorite-artists" class="endpoint-section">
+      <h2>Favorite Artists</h2>
+      <p class="section-desc">Discover the owner's top-rated artists, filtered by minimum album count.</p>
+      <article class="endpoint-card">
+        <p>This section uses a drop-down menu that creates a data table with at most 15 artists, organized by average rating in descending order. You can filter by the minimum number of albums an artist must have, and choose whether to include EPs and live albums.</p>
+        <div class="params-block">
+          <strong>Input</strong>
+          <table class="params-table">
+            <tr><th>Control</th><th>Type</th><th>Description</th></tr>
+            <tr><td>Minimum Albums</td><td>Drop-Down Menu</td><td>Set the minimum number of albums an artist must have to appear in the list</td></tr>
+            <tr><td>Include EPs / Live Albums</td><td>Checkbox</td><td>Toggle whether EPs and live albums count toward an artist's total</td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Output: data table (up to 15 rows) with the following fields</strong>
+          <table class="params-table" style="margin-top:0.5rem">
+            <tr><th>Field</th><th>Description</th></tr>
+            <tr><td><code>Artist</code></td><td>The artist name</td></tr>
+            <tr><td><code>Rating</code></td><td>The artist's average rating across all their albums</td></tr>
+            <tr><td><code>Albums</code></td><td>The number of albums included in the rating</td></tr>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <!-- Artist Comparison -->
+    <section id="artist-comparison" class="endpoint-section">
+      <h2>Artist Comparison</h2>
+      <p class="section-desc">Compare how two artists' album ratings have changed over time.</p>
+      <article class="endpoint-card">
+        <p>This section creates a comparison between two artists that you select. It generates a comparative line chart that displays each artist's average rating of albums released in a given year.</p>
+        <div class="params-block">
+          <strong>Input</strong>
+          <table class="params-table">
+            <tr><th>Control</th><th>Type</th><th>Description</th></tr>
+            <tr><td>Artist 1</td><td>Drop-Down Menu</td><td>The first artist to compare (plotted as a red line)</td></tr>
+            <tr><td>Artist 2</td><td>Drop-Down Menu</td><td>The second artist to compare (plotted as a blue line)</td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Output: comparative line chart</strong>
+          <table class="params-table" style="margin-top:0.5rem">
+            <tr><th>Element</th><th>Description</th></tr>
+            <tr><td>Red line</td><td>The first artist's average album rating per year</td></tr>
+            <tr><td>Blue line</td><td>The second artist's average album rating per year</td></tr>
+            <tr><td>X-axis</td><td>Year</td></tr>
+            <tr><td>Y-axis</td><td>Average rating</td></tr>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <!-- Vinyl -->
+    <section id="vinyl" class="endpoint-section">
+      <h2>Vinyl</h2>
+      <p class="section-desc">Find highly rated albums the owner does not yet own on vinyl.</p>
+      <article class="endpoint-card">
+        <p>This section uses a drop-down menu where you can select a minimum rating to find the top-rated albums that the person does not own on vinyl, sorted in descending order by rating.</p>
+        <div class="params-block">
+          <strong>Input</strong>
+          <table class="params-table">
+            <tr><th>Control</th><th>Type</th><th>Description</th></tr>
+            <tr><td>Minimum Rating</td><td>Drop-Down Menu</td><td>Only albums at or above this rating will appear in the results</td></tr>
+          </table>
+        </div>
+        <div class="schema-block">
+          <strong>Output: data table with the following fields</strong>
+          <table class="params-table" style="margin-top:0.5rem">
+            <tr><th>Field</th><th>Description</th></tr>
+            <tr><td><code>Album</code></td><td>The album title</td></tr>
+            <tr><td><code>Artist</code></td><td>The artist who made the album</td></tr>
+            <tr><td><code>Rating</code></td><td>The owner's rating for the album</td></tr>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <!-- Terminology -->
+    <section id="terminology" class="endpoint-section">
+      <h2>Appendix: Terminology</h2>
+      <p class="section-desc">Definitions for interface terms used throughout the application.</p>
+
+      <article class="endpoint-card">
+        <h3>Range Slider</h3>
+        <p>A user interface component that allows you to select a range of values from a set of numbers.</p>
+      </article>
+
+      <article class="endpoint-card">
+        <h3>Handle</h3>
+        <p>The draggable element on a range slider that users interact with to select a value or range of values. It moves along the slider's track and visually indicates the current selected value(s). In a dual-range slider, there are typically two handles — one for the minimum value and one for the maximum value — allowing users to define a specific range.</p>
+      </article>
+
+      <article class="endpoint-card">
+        <h3>Drop-Down Menu</h3>
+        <p>A graphical user interface element that allows users to choose from a list of options that appears when they click on or hover over a button or other control.</p>
+      </article>
+
+      <article class="endpoint-card">
+        <h3>Comparative Line Chart</h3>
+        <p>A visual representation of data used to compare and contrast two or more data sets.</p>
+      </article>
+
+      <article class="endpoint-card">
+        <h3>Aggregate</h3>
+        <p>To filter and combine data based on criteria you select.</p>
+      </article>
+    </section>
+
+  </main>
+
+  <footer class="api-footer">
+    <p><a href="../index.html">← Back to My Favorite Albums Documentation</a></p>
+  </footer>
+</body>
+</html>
