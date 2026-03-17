@@ -4,7 +4,7 @@ export default function AlbumCsv() {
       <h3>Setting Up album-ranking.csv</h3>
       <p>This is the CSV file that all data aggregation functions operate on. Follow these steps to create or update it with your own album data. Getting this file structured correctly is required before the app loads and displays any data.</p>
       <ol>
-        <li>In Excel or Google Sheets, create a new blank file and enter the following column headers in the first row in this exact order:
+        <li>In Excel, Google Sheets, or your program of choice, create a new blank file and enter the following column headers in the first row in this exact order:
           <div className="example-block"><pre><code>Year,Ranking,Album,Artist,Rating,Vinyl,EP,Live</code></pre></div>
         </li>
         <li>Add each album as its own row beneath the headers. For the last three columns:
