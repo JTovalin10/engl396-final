@@ -3,7 +3,7 @@ export default function AppUiR() {
     <article className="endpoint-card">
       <h3>Defining the Application Layout</h3>
       <h4><code>app_ui.R</code></h4>
-      <p>Use these steps to modify the layout or add a new tab. <code>app_ui.R</code> controls everything the user sees — keeping it separate from the server logic makes both files easier to maintain and update independently.</p>
+      <p>Use these steps to modify the layout or add a new tab. <code>app_ui.R</code> controls everything the user sees. Keeping it separate from the server logic makes both files easier to maintain and update independently.</p>
       <ol>
         <li>Open <code>app_ui.R</code> in RStudio.</li>
         <li>Each tab is defined as a <code>tabPanel()</code> inside <code>tabsetPanel()</code>:
@@ -17,8 +17,8 @@ export default function AppUiR() {
               <ol className="sub-steps">
                 <li>Find the last <code>tabPanel()</code> inside <code>tabsetPanel()</code>.</li>
                 <li>Add your new <code>tabPanel()</code> directly after it, before the closing <code>)</code> of <code>tabsetPanel()</code>.</li>
-                <li>Set the input ID and submit ID — these must match what you use in <code>app_server.R</code>.</li>
-                <li>Set the output ID — this must match the ID used in <code>renderTable()</code> or <code>renderPlot()</code> in <code>app_server.R</code>.</li>
+                <li>Set the input ID and submit ID. These must match what you use in <code>app_server.R</code>.</li>
+                <li>Set the output ID. This must match the ID used in <code>renderTable()</code> or <code>renderPlot()</code> in <code>app_server.R</code>.</li>
                 <li>Use <code>plotOutput()</code> instead of <code>tableOutput()</code> if your function returns a chart.</li>
               </ol>
             </li>

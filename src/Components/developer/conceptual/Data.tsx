@@ -14,7 +14,7 @@ export default function Data() {
             <tr><td><code>Year</code></td><td>integer</td><td>The year the album was released</td></tr>
             <tr><td><code>Ranking</code></td><td>integer</td><td>The owner's rank for that year (1 = top pick)</td></tr>
             <tr><td><code>Album</code></td><td>character</td><td>Album title</td></tr>
-            <tr><td><code>Artist</code></td><td>character</td><td>Artist name — must be spelled consistently across all rows</td></tr>
+            <tr><td><code>Artist</code></td><td>character</td><td>Artist name (must be spelled consistently across all rows)</td></tr>
             <tr><td><code>Rating</code></td><td>numeric</td><td>The owner's rating on a 0–10 scale</td></tr>
             <tr><td><code>Vinyl</code></td><td>character</td><td><code>v</code> if owned on vinyl, empty otherwise</td></tr>
             <tr><td><code>EP</code></td><td>character</td><td><code>EP</code> if the release is an extended play, empty otherwise</td></tr>
@@ -41,9 +41,9 @@ export default function Data() {
       </div>
       <p>Key things to notice:</p>
       <ul>
-        <li><code>Vinyl</code> is <code>v</code> when owned on vinyl and empty otherwise — it is never <code>false</code> or <code>0</code></li>
+        <li><code>Vinyl</code> is <code>v</code> when owned on vinyl and empty otherwise. It is never <code>false</code> or <code>0</code>.</li>
         <li><code>EP</code> and <code>Live</code> follow the same pattern: the column value matches the column name when true, and is empty otherwise</li>
-        <li>Most rows leave <code>EP</code> and <code>Live</code> blank — a standard album has three empty fields at the end</li>
+        <li>Most rows leave <code>EP</code> and <code>Live</code> blank. A standard album has three empty fields at the end.</li>
         <li><code>Ranking</code> resets to 1 each year; two albums from different years can share the same ranking</li>
       </ul>
     </article>

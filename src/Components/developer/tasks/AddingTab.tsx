@@ -10,7 +10,7 @@ export default function AddingTab() {
         <li>Open <code>app_ui.R</code>. Find the <code>tabPanel()</code> for the tab you want to change by searching for its name (e.g., <code>tabPanel("Vinyl", ...)</code>).
           <ol className="sub-steps">
             <li>Update the input control choices, labels, or IDs as needed.</li>
-            <li>If you change an input or output ID, note the new IDs — you will need them in the next step.</li>
+            <li>If you change an input or output ID, note the new IDs for use in the next step.</li>
           </ol>
         </li>
         <li>Open <code>app_server.R</code>. Find the <code>observeEvent()</code> block for the same tab by searching for its submit ID (e.g., <code>input$submit_vinyl</code>).
@@ -26,7 +26,7 @@ export default function AddingTab() {
       <h4>Adding a New Tab</h4>
       <p>Use this workflow to create a new tab backed by a new R function. All four steps are required.</p>
       <ol>
-        <li>Create a new R file in the project directory and write your function. Your function can reference <code>album_data</code> directly — it is a global variable loaded automatically when the app starts:
+        <li>Create a new R file in the project directory and write your function. Your function can reference <code>album_data</code> directly, as it is a global variable loaded automatically when the app starts:
           <div className="example-block"><pre><code>{`your_function <- function(your_input) {
   album_data %>%
     filter(Column == your_input) %>%
@@ -38,7 +38,7 @@ export default function AddingTab() {
         <li>Open <code>app.R</code>. Find the block of existing <code>source()</code> calls and add a new line for your file:
           <div className="example-block"><pre><code>source("your_file.R")</code></pre></div>
         </li>
-        <li>Open <code>app_ui.R</code>. Add a new <code>tabPanel()</code> after the last existing one, before the closing <code>)</code> of <code>tabsetPanel()</code>. Choose IDs for the input, submit button, and output — you will use these same IDs in the next step:
+        <li>Open <code>app_ui.R</code>. Add a new <code>tabPanel()</code> after the last existing one, before the closing <code>)</code> of <code>tabsetPanel()</code>. Choose IDs for the input, submit button, and output. You will use these same IDs in the next step:
           <div className="example-block"><pre><code>{`tabPanel("Your Tab Name",
   selectInput("your_input", "Label", choices = c(...)),
   actionButton("your_submit", "Submit"),

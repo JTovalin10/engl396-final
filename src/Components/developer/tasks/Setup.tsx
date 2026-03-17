@@ -12,7 +12,7 @@ export default function Setup() {
             <li>In the console, run:
               <div className="example-block"><pre><code>install.packages(c("shiny", "dplyr", "ggplot2"))</code></pre></div>
             </li>
-            <li>Wait for the console prompt (<code>&gt;</code>) to reappear — this indicates installation is complete.</li>
+            <li>Wait for the console prompt (<code>&gt;</code>) to reappear, which indicates installation is complete.</li>
           </ol>
         </li>
         <li>Set your working directory to the project folder via <strong>Session &gt; Set Working Directory &gt; Choose Directory</strong>.</li>

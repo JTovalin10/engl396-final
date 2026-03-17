@@ -17,12 +17,24 @@ export default function DataSchema() {
             <tr><td><code>Live</code></td><td>character</td><td>"Live" for live albums; empty otherwise</td></tr>
           </tbody>
         </table>
-        <p className="note">Artist names are case-sensitive. Use <code>unique(album_data$Artist)</code> for valid values.</p>
+        <p className="note">Note: Artist names are case-sensitive. Inconsistent spelling causes an artist to appear as multiple separate entries throughout the app.</p>
+        <h4>Example Rows</h4>
+        <p>The rows below illustrate how different field combinations appear in the dataset:</p>
         <div className="example-block">
-          <strong>Example: List valid artist names</strong>
-          <pre><code>{`unique(album_data$Artist)
-# [1] "Radiohead"   "Arcade Fire" "Taylor Swift" ...`}</code></pre>
+          <pre>{`Year,Ranking,Album,Artist,Rating,Vinyl,EP,Live
+1993,1,Siamese Dream,Smashing Pumpkins,9.3,v,,
+1993,2,Vs.,Pearl Jam,8.5,v,,
+1993,3,In Utero,Nirvana,8.5,,,
+2005,1,Illinois,Sufjan Stevens,9.8,v,,
+1995,6,The Bends,Radiohead,9,,EP,
+2018,4,Kin,Sufjan Stevens,7.5,,,Live`}</pre>
         </div>
+        <p>Key things to notice:</p>
+        <ul>
+          <li><code>Vinyl</code> is <code>v</code> when owned on vinyl and empty otherwise</li>
+          <li><code>EP</code> and <code>Live</code> follow the same pattern: the column value matches the column name when true, and is empty otherwise</li>
+          <li><code>Ranking</code> resets to 1 each year. Two albums from different years can share the same ranking.</li>
+        </ul>
       </article>
     </section>
   )

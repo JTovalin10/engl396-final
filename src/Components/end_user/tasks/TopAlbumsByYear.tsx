@@ -17,7 +17,7 @@ export default function TopAlbumsByYear() {
           <img src="/task/TopAlbumsByYear/S4.jpg" alt="Completed Top Albums by Year data table showing full results for 1995" className="step-img" />
         </li>
       </ol>
-      <p className="note">Note: Once you have clicked Submit for the first time, you do not need to click it again — selecting a new year from the <em>drop-down menu</em> automatically updates the results.</p>
+      <p className="note">Note: Once you have clicked Submit for the first time, you do not need to click it again. Selecting a new year from the <em>drop-down menu</em> automatically updates the results.</p>
     </article>
   )
 }

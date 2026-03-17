@@ -10,9 +10,9 @@ export default function ArtistsAlbums() {
         <li>Click the <strong>Choose a band or artist</strong> <em>drop-down menu</em> and select <strong>10,000 Maniacs</strong>.
           <img src="/task/ArtistsAlbums/S2.jpg" alt="Drop-down menu open showing a list of artists in alphabetical order" className="step-img" />
         </li>
-        <li>Click <strong>Submit</strong>. If done correctly, 10,000 Maniacs has one ranked album — <em>MTV Unplugged</em>. Below the table, the total album count and average rating are displayed, as shown below.
+        <li>Click <strong>Submit</strong>. If done correctly, 10,000 Maniacs has one ranked album, <em>MTV Unplugged</em>. Below the table, the total album count and average rating are displayed, as shown below.
           <img src="/task/ArtistsAlbums/S3.jpg" alt="Data table showing 10,000 Maniacs with one ranked album MTV Unplugged and the album count and average rating displayed below" className="step-img" />
-          <p className="note">Note: Once you have clicked Submit for the first time, you do not need to click it again — selecting a new artist from the <em>drop-down menu</em> automatically updates the results.</p>
+          <p className="note">Note: Once you have clicked Submit for the first time, you do not need to click it again. Selecting a new artist from the <em>drop-down menu</em> automatically updates the results.</p>
         </li>
         <li>
           <ol className="sub-steps">

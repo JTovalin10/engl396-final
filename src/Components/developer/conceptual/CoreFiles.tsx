@@ -11,7 +11,7 @@ export default function CoreFiles() {
         <li>Sources every helper file (e.g., <code>source("home.R")</code>, <code>source("vinyl.R")</code>), making their functions available globally.</li>
         <li>Calls <code>shinyApp(ui = app_ui, server = app_server)</code>, which hands control to the other two core files.</li>
       </ol>
-      <p>Think of <code>app.R</code> as the wiring diagram — it connects everything but contains no logic of its own.</p>
+      <p>Think of <code>app.R</code> as the wiring diagram. It connects everything but contains no logic of its own.</p>
 
       <h4>app_ui.R — What the User Sees</h4>
       <p><code>app_ui.R</code> runs once when the app starts. It reads <code>album-ranking.csv</code> to extract the list of valid years and artist names, then uses those values to populate the drop-down menus and sliders across all seven tabs. It defines the layout — what controls appear and where — but contains no data logic. Each tab declares an input ID (e.g., <code>"band_select"</code>) and an output ID (e.g., <code>"band_table"</code>) that <code>app_server.R</code> listens to and writes to.</p>
@@ -24,7 +24,7 @@ export default function CoreFiles() {
         <li>Passes that value to the appropriate helper function (e.g., <code>albums_by_bands(input$band_select)</code>).</li>
         <li>Writes the result to the output placeholder defined in <code>app_ui.R</code> (e.g., <code>output$band_table</code>).</li>
       </ol>
-      <p>The IDs in <code>app_ui.R</code> and <code>app_server.R</code> must match exactly — a mismatch causes the output to silently fail with no error message.</p>
+      <p className="note">Note: The IDs in <code>app_ui.R</code> and <code>app_server.R</code> must match exactly. A mismatch causes the output to silently fail with no error message.</p>
 
       <div className="params-block">
         <strong>Data flow summary</strong>

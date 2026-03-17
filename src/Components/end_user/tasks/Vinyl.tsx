@@ -2,7 +2,7 @@ export default function Vinyl() {
   return (
     <article className="endpoint-card">
       <h3>Finding Albums Not Yet in the Vinyl Collection</h3>
-      <p>The <strong>Vinyl</strong> tab displays all albums the owner does not yet own on vinyl that meet a minimum rating threshold you select. Results show every album at or above that rating, sorted by rating in descending order — making it easy to identify top candidates for the vinyl collection.</p>
+      <p>The <strong>Vinyl</strong> tab displays all albums the owner does not yet own on vinyl that meet a minimum rating threshold you select. Results show every album at or above that rating, sorted by rating in descending order, making it easy to identify top candidates for the vinyl collection.</p>
       <ol>
         <li>Click the <strong>Vinyl</strong> tab.
           <img src="/task/Vinyl/S1.jpg" alt="Vinyl tab showing the Select which albums to display drop-down menu and a Submit button" className="step-img" />
@@ -19,7 +19,7 @@ export default function Vinyl() {
           </ol>
         </li>
       </ol>
-      <p className="note">Note: Once you have clicked Submit for the first time, you do not need to click it again — selecting a new rating from the <em>drop-down menu</em> automatically updates the results.</p>
+      <p className="note">Note: Once you have clicked Submit for the first time, you do not need to click it again. Selecting a new rating from the <em>drop-down menu</em> automatically updates the results.</p>
     </article>
   )
 }

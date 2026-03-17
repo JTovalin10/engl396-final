@@ -2,7 +2,7 @@ export default function TabToFileMapping() {
   return (
     <article className="endpoint-card schema-card">
       <h3>Tab-to-File Mapping</h3>
-      <p>Each tab in the UI corresponds to one helper file. <code>app_server.R</code> calls the functions from these files in response to user input. Understanding this mapping makes it straightforward to trace a bug or add a new feature — find the tab, find the file.</p>
+      <p>Each tab in the UI corresponds to one helper file. <code>app_server.R</code> calls the functions from these files in response to user input. Understanding this mapping makes it straightforward to trace a bug or add a new feature: find the tab, find the file.</p>
       <table className="params-table">
         <tbody>
           <tr><th>Tab</th><th>File</th><th>Functions Called</th></tr>
