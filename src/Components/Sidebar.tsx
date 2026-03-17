@@ -94,6 +94,12 @@ export default function Sidebar() {
   const [audience, setAudience] = useState<Audience>(isDevPath ? 'developer' : 'end-user')
   const [expanded, setExpanded] = useState<Record<string, boolean>>({})
 
+  // Keep audience in sync when navigating via Home page buttons
+  useEffect(() => {
+    if (location.pathname.startsWith('/developer')) setAudience('developer')
+    else if (location.pathname.startsWith('/end-user')) setAudience('end-user')
+  }, [location.pathname])
+
   const activeNav = audience === 'end-user' ? endUserNav : developerNav
 
   // Auto-expand the parent whose child matches the current route
@@ -125,6 +131,12 @@ export default function Sidebar() {
 
   return (
     <nav className="sidebar">
+      <div className="sidebar-home">
+        <NavLink to="/" className={({ isActive }) => isActive ? 'sidebar-home-link active' : 'sidebar-home-link'}>
+          My Favorite Albums
+        </NavLink>
+      </div>
+
       <div className="sidebar-audience-toggle">
         <button
           className={audience === 'end-user' ? 'audience-btn active' : 'audience-btn'}

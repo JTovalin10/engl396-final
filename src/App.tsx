@@ -1,6 +1,7 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Sidebar from './Components/Sidebar'
+import Home from './Components/Home'
 
 import EuWhatIsMFA from './Components/end_user/conceptual/WhatIsMFA'
 import EuConceptualNumberOne from './Components/end_user/conceptual/NumberOneAlbums'
@@ -50,7 +51,7 @@ export default function App() {
       <Sidebar />
       <main className="content">
         <Routes>
-          <Route path="/" element={<Navigate to="/end-user/conceptual/intro" replace />} />
+          <Route path="/" element={<Home />} />
 
           {/* End User — Conceptual */}
           <Route path="/end-user/conceptual/intro" element={<EuWhatIsMFA />} />
