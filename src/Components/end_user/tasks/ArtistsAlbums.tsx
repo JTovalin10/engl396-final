@@ -2,7 +2,7 @@ export default function ArtistsAlbums() {
   return (
     <article className="endpoint-card">
       <h3>Browsing an Artist's Ranked Albums</h3>
-      <p>The <strong>Artist's Albums</strong> tab lets you explore every album the owner has ranked for a specific artist, including each album's release year and rating. Below the <em>data table</em>, the tab also shows the artist's total ranked album count and average rating — a summary that becomes especially useful for artists with many albums in the database. In this tutorial, you look up two artists to see how the tab works and how it updates when you switch artists.</p>
+      <p>The <strong>Artist's Albums</strong> tab lets you explore every album the owner has ranked for a specific artist, including each album's release year and rating. Below the <em>data table</em>, the tab also shows the artist's total ranked album count and average rating. In this tutorial, you look up two artists to see how the tab works and how it updates when you switch artists.</p>
       <ol>
         <li>Click the <strong>Artist's Albums</strong> tab.
           <img src="/task/ArtistsAlbums/S1.jpg" alt="Artist's Albums tab showing the Choose a band or artist drop-down menu and a Submit button" className="step-img" />

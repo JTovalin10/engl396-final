@@ -18,7 +18,7 @@ export default function ArtistComparison() {
           <p>You see one line and one dot. The black dot represents 10,000 Maniacs — they appear as a single dot because the owner has ranked only one of their albums, from 1993, with a rating of 8. The blue line represents Acid House Kings, which spans from 1997 to 2005 and stays flat at 6, indicating the owner consistently rated their albums a 6 across that period.</p>
         </li>
       </ol>
-      <p className="note">Note: an artist only appears on the chart for years in which the owner has at least one ranked album.</p>
+      <p className="note">Note: An artist only appears on the chart for years in which the owner has at least one ranked album.</p>
     </article>
   )
 }

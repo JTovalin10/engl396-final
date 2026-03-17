@@ -42,7 +42,7 @@ export default function AppServerR() {
             </li>
           </ul>
         </li>
-        <li>Save and run the app with <code>shiny::runApp()</code>. Interact with the tab you modified and confirm it returns the expected output.</li>
+        <li>Save and run the app with <code>shiny::runApp()</code>. Interact with the tab you added or modified and confirm it returns the expected output.</li>
       </ol>
     </article>
   )
