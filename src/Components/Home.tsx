@@ -20,7 +20,7 @@ export default function Home() {
           <span className="home-card-cta">Get started →</span>
         </button>
 
-        <button className="home-card" onClick={() => navigate('/developer/conceptual/how-app-is-structured')}>
+        <button className="home-card" onClick={() => navigate('/developer/conceptual/shiny-app')}>
           <h2>Developer Docs</h2>
           <p>Understand how the codebase is structured, how the core files work together, and how to run, modify, and extend the application. Includes setup instructions, file-by-file descriptions, and a guide to adding new tabs.</p>
           <span className="home-card-cta">Get started →</span>

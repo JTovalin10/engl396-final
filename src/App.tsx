@@ -30,11 +30,13 @@ import EuRefDataSchema from './Components/end_user/reference/DataSchema'
 
 import EuTerminology from './Components/end_user/Terminology'
 
+import DevPrerequisites from './Components/developer/conceptual/Prerequisites'
 import DevHowAppIsStructured from './Components/developer/conceptual/HowAppIsStructured'
 import DevCoreFiles from './Components/developer/conceptual/CoreFiles'
 import DevTabToFileMapping from './Components/developer/conceptual/TabToFileMapping'
 import DevHelperFiles from './Components/developer/conceptual/HelperFiles'
 import DevWhatIsShinyApp from './Components/developer/conceptual/WhatIsShinyApp'
+import DevData from './Components/developer/conceptual/Data'
 
 import DevSetup from './Components/developer/tasks/Setup'
 import DevAlbumCsv from './Components/developer/tasks/AlbumCsv'
@@ -85,10 +87,12 @@ export default function App() {
           <Route path="/end-user/terminology" element={<EuTerminology />} />
 
           {/* Developer — Conceptual */}
+          <Route path="/developer/conceptual/prerequisites" element={<DevPrerequisites />} />
           <Route path="/developer/conceptual/how-app-is-structured" element={<DevHowAppIsStructured />} />
           <Route path="/developer/conceptual/core-files" element={<DevCoreFiles />} />
           <Route path="/developer/conceptual/tab-to-file-mapping" element={<DevTabToFileMapping />} />
           <Route path="/developer/conceptual/helper-files" element={<DevHelperFiles />} />
+          <Route path="/developer/conceptual/data" element={<DevData />} />
           <Route path="/developer/conceptual/shiny-app" element={<DevWhatIsShinyApp />} />
 
           {/* Developer — Tasks */}

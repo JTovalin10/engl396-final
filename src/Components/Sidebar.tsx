@@ -57,11 +57,13 @@ const developerNav: NavItem[] = [
   {
     label: 'Conceptual Overview',
     children: [
+      { label: 'Prerequisites', to: '/developer/conceptual/prerequisites' },
+      { label: 'What is a Shiny App?', to: '/developer/conceptual/shiny-app' },
       { label: 'How the App is Structured', to: '/developer/conceptual/how-app-is-structured' },
       { label: 'How the Core Files Work Together', to: '/developer/conceptual/core-files' },
       { label: 'Tab-to-File Mapping', to: '/developer/conceptual/tab-to-file-mapping' },
-      { label: 'Helper File Descriptions', to: '/developer/conceptual/helper-files' },
-      { label: 'What is a Shiny App?', to: '/developer/conceptual/shiny-app' },
+      { label: 'Tab Helper Files', to: '/developer/conceptual/helper-files' },
+      { label: 'Data', to: '/developer/conceptual/data' },
     ],
   },
   {
@@ -121,7 +123,7 @@ export default function Sidebar() {
     if (next === 'end-user') {
       navigate('/end-user/conceptual/intro')
     } else {
-      navigate('/developer/conceptual/how-app-is-structured')
+      navigate('/developer/conceptual/prerequisites')
     }
   }
 
