@@ -1,7 +1,8 @@
 export default function AppServerR() {
   return (
     <article className="endpoint-card">
-      <h3>app_server.R — Connecting Input to Data Functions</h3>
+      <h3>Connecting Input to Data Functions</h3>
+      <h4><code>app_server.R</code></h4>
       <p>Use these steps to trace or update how a tab's user input connects to a data function. <code>app_server.R</code> handles all reactivity — it listens for user input and decides what to compute and display in response.</p>
       <ol>
         <li>Open <code>app_server.R</code> in RStudio.</li>

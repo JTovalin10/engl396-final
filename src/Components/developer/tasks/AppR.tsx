@@ -1,7 +1,8 @@
 export default function AppR() {
   return (
     <article className="endpoint-card">
-      <h3>app.R — Running the Application</h3>
+      <h3>Running the Application</h3>
+      <h4><code>app.R</code></h4>
       <p>Use these steps to launch the <i>My Favorite Albums</i> Shiny web application. <code>app.R</code> is the entry point that loads all libraries and sources every other R file in the project.</p>
       <ol>
         <li>Open <code>app.R</code> in RStudio.</li>

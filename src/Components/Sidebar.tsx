@@ -69,9 +69,9 @@ const developerNav: NavItem[] = [
     children: [
       { label: 'Setting Up R, RStudio, and Required Packages', to: '/developer/tasks/setup' },
       { label: 'Setting Up album-ranking.csv', to: '/developer/tasks/album-csv' },
-      { label: 'app.R — Running the Application', to: '/developer/tasks/app-r' },
-      { label: 'app_ui.R — Defining the Application Layout', to: '/developer/tasks/app-ui-r' },
-      { label: 'app_server.R — Connecting Input to Data Functions', to: '/developer/tasks/app-server-r' },
+      { label: 'Running the Application', to: '/developer/tasks/app-r' },
+      { label: 'Defining the Application Layout', to: '/developer/tasks/app-ui-r' },
+      { label: 'Connecting Input to Data Functions', to: '/developer/tasks/app-server-r' },
       { label: 'Adding a New Tab and Function', to: '/developer/tasks/adding-tab' },
     ],
   },

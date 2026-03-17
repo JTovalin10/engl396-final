@@ -1,7 +1,8 @@
 export default function AppUiR() {
   return (
     <article className="endpoint-card">
-      <h3>app_ui.R — Defining the Application Layout</h3>
+      <h3>Defining the Application Layout</h3>
+      <h4><code>app_ui.R</code></h4>
       <p>Use these steps to modify the layout or add a new tab. <code>app_ui.R</code> controls everything the user sees — keeping it separate from the server logic makes both files easier to maintain and update independently.</p>
       <ol>
         <li>Open <code>app_ui.R</code> in RStudio.</li>
