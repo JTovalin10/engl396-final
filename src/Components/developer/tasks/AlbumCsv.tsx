@@ -16,7 +16,7 @@ export default function AlbumCsv() {
         </li>
         <li>Save the file as a CSV:
           <ol className="sub-steps">
-            <li>Name the file <code>album-rankings.csv</code>.</li>
+            <li>Name the file <code>album-ranking.csv</code>.</li>
             <li>Place it in the <code>data/</code> folder inside the <i>My Favorite Albums</i> project folder.</li>
           </ol>
         </li>
