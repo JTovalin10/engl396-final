@@ -24,7 +24,7 @@ export default function AlbumCsv() {
         <li>Run the app with <code>shiny::runApp()</code>. If the Home tab displays a total album count and artist count, the file loaded correctly.</li>
       </ol>
       <p className="note">Note: the Artist field must be spelled consistently across all rows. Inconsistent capitalization (e.g., "Radiohead" vs. "radiohead") causes that artist to appear as multiple separate entries throughout the app.</p>
-      <p className="note">Note: the year range slider is hardcoded to 1993–2024. If your data includes years outside that range, see the app_ui.R task for instructions on updating it.</p>
+      <p className="note">Note: the year range slider is hardcoded to 1993–2024. If your data includes years outside that range, see <i>Defining the Application Layout</i> for instructions on updating it.</p>
     </article>
   )
 }
