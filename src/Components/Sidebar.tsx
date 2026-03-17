@@ -82,11 +82,6 @@ const developerNav: NavItem[] = [
 
 type Audience = 'end-user' | 'developer'
 
-function getAllChildPaths(nav: NavItem[]): string[] {
-  return nav.flatMap(item =>
-    item.children ? item.children.map(c => c.to) : item.to ? [item.to] : []
-  )
-}
 
 export default function Sidebar() {
   const location = useLocation()
